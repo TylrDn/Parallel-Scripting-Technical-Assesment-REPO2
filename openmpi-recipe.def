@@ -1,0 +1,19 @@
+Bootstrap: docker
+From: ubuntu:18.04
+
+%post
+    apt-get update
+    apt-get install -y gcc gfortran g++ make
+    apt-get install -y openmpi-bin libopenmpi-dev
+
+%files
+    /path/to/hello-world.c /contrib/hello-world.c
+
+%environment
+    export OMPI_DIR=/usr
+    export PATH=$OMPI_DIR/bin:$PATH
+    export LD_LIBRARY_PATH=$OMPI_DIR/lib:$LD_LIBRARY_PATH
+
+%runscript
+    mpic++ /contrib/hello-world.c -o /contrib/openmpi-hello
+    /contrib/openmpi-hello
