@@ -7,7 +7,7 @@ From: ubuntu:18.04
     apt-get install -y openmpi-bin libopenmpi-dev
 
 %files
-    /path/to/hello-world.c /contrib/hello-world.c
+    /contrib/openmpi/hello-world.c /contrib/hello-world.c
 
 %environment
     export OMPI_DIR=/usr
